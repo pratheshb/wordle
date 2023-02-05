@@ -1,0 +1,34 @@
+.hint-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 4px 2px #ccc;
+    max-width: 85%;
+    display: none;
+}
+
+.hint-container.show {
+    display: initial;
+}
+
+.hint-container h2 {
+    margin-top: 0;
+}
+
+.color-indicator {
+    display: inline-block;
+    height: .75rem;
+    width: .75rem;
+    border-radius: 50%;
+}
+
+.close-icon-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-icon-container button {
+    padding: 0.25rem;
+}

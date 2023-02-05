@@ -1,0 +1,11 @@
+.keyboard-control .row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.keyboard-control .row:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
