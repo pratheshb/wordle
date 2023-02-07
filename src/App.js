@@ -9,7 +9,7 @@ function App() {
   const [solution, setSolution] = useState('');
   const [guesses, setGuesses] = useState(Array(6).fill(''));
   const [currentGuess, setCurrentGuess] = useState(0);
-  const [validation, setValidation] = useState(guesses.map(_ => Array(5).fill('')))
+  // const [validation, setValidation] = useState(guesses.map(_ => Array(5).fill('')))
   const [showHint, setShowHint] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
   const backDropClass = showHint ? 'blur' : '';
@@ -39,21 +39,6 @@ function App() {
     return () => document.body.removeEventListener('keyup', handleKeyUp)
   }, [guesses, currentGuess, showHint]);
 
-  function validatorFn(v) {
-    const word = guesses[currentGuess].toLowerCase();
-    return (v.map((elm, index) => {
-      if (index === currentGuess) {
-        return elm.map((_, i) => {
-          if (word[i] === solution[i]) {
-            return 'correct';
-          }
-          return solution.includes(word[i]) ? 'partially-correct' : 'in-correct';
-        })
-      }
-      return elm;
-    }))
-  }
-
   function handleUserAction(key) {
     if (showHint || isCorrect || currentGuess >= 6) {
       return;
@@ -72,7 +57,6 @@ function App() {
       if (word.length < 5) {
         return alert('Not Enough Letters');
       }
-      setValidation(validatorFn);
       setIsCorrect(word === solution);
       setCurrentGuess(currentGuess + 1);
     }
@@ -92,7 +76,6 @@ function App() {
     setSolution(words[Math.floor(Math.random() * words.length)]);
     setGuesses(Array(6).fill(''));
     setCurrentGuess(0);
-    setValidation(guesses.map(_ => Array(5).fill('')))
     setIsCorrect(false);
   }
 
@@ -105,7 +88,7 @@ function App() {
           <button type="button" onClick={handleRefresh}>Refresh</button>
         </nav>
       </header>
-      <GameBoard backDropClass={backDropClass} guesses={guesses} validation={validation} />
+      <GameBoard backDropClass={backDropClass} guesses={guesses} solution={solution} currentGuess={currentGuess} />
       <Result backDropClass={backDropClass} currentGuess={currentGuess} solution={solution} isCorrect={isCorrect} />
       <KeyBoardControl backDropClass={backDropClass} handleUserAction={handleUserAction} />
       <footer className={backDropClass}>

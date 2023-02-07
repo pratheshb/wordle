@@ -5,8 +5,6 @@
         "shine",
         "radar",
         "range",
-        "shirk",
-        "prawn",
         "elect",
         "eject",
         "drink",
@@ -159,6 +157,9 @@
         "mafia",
         "power",
         "sound",
-        "under"
+        "under",
+        "arise",
+        "smell",
+        "alive"
     ]
 }
