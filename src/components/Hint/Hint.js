@@ -1,8 +1,13 @@
 import './Hint.css';
+import 'wicg-inert';
+import { useEffect, useRef } from 'react';
 export default function Hint({showHint, setShowHint}) {
-
+    const hintRef = useRef(null);
+    useEffect(() => {
+      hintRef.current.inert = !showHint;
+    }, [hintRef, showHint]);
     return (
-        <section className={`hint-container ${showHint ? 'show' : ''}`}>
+        <section ref={hintRef} className={`hint-container ${showHint ? 'show' : ''}`}>
         <div className='close-icon-container'>
           <button type="button" onClick={() => setShowHint(false)} aria-label="Close">x</button>
         </div>
