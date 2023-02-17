@@ -5,6 +5,7 @@ import KeyBoardControl from './components/KeyBoardControl/KeyBoardControl';
 import GameBoard from './components/GameBoard/GameBoard';
 import Result from './components/Result/Result';
 import 'wicg-inert';
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 function App() {
   const [words, setWords] = useState([]);
   const [solution, setSolution] = useState('');
@@ -12,6 +13,7 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState(0);
   const [showHint, setShowHint] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [theme, setTheme] = useState('light');
   const headerRef = useRef(null);
   const footerRef = useRef(null);
   const backDropClass = showHint ? 'blur' : '';
@@ -87,12 +89,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <header ref={headerRef} className={`toolbar flex-end ${backDropClass}`}>
         <h1>Wordle <sup>copied</sup></h1>
         <nav>
           <button type="button" onClick={() => setShowHint(true)}>Help</button>
           <button type="button" onClick={handleRefresh}>Refresh</button>
+          { theme === 'light' ? <MdOutlineDarkMode onClick={() => setTheme('dark')} /> : <MdOutlineLightMode onClick={() => setTheme('light')} />}
         </nav>
       </header>
       <GameBoard backDropClass={backDropClass} guesses={guesses} solution={solution} currentGuess={currentGuess} />

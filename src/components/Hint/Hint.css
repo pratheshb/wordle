@@ -2,13 +2,16 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #fff;
+    background-color: #fff;
     padding: 1rem;
     box-shadow: 0 0 4px 2px #ccc;
     max-width: 85%;
     display: none;
 }
-
+.App.dark .hint-container {
+    background-color: rgb(35, 39, 47);
+    box-shadow: 0 0 4px 2px #333;
+}
 .hint-container.show {
     display: initial;
 }
